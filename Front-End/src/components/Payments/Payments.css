@@ -1,0 +1,335 @@
+
+/* Main container styles */
+#payments-container {
+    background: linear-gradient(to bottom, #e5ecfb, white);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 70vh;
+    text-align: center;
+    justify-content: space-between; /* Push footer down */
+    padding-bottom: 300px;
+  }
+  
+  #payments-container h4 {
+    color: navy;
+  }
+  
+  .btn-primary {
+    background-color: skyblue;
+    border: none;
+    width: 50%;
+    padding: 10px 0;
+    display: inline-block;
+    margin-top: 50px !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(200, 217, 230);
+  }
+  
+  .prop-name {
+    color: navy;
+  }
+  
+  /* Background blur when popup is open */
+  .blur-background {
+    filter: blur(0.1px);
+  }
+  
+  /* PayHere Popup Styles */
+  .payhere-popup-overlay {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .payhere-popup-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 0;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .payhere-popup {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Header Styles */
+  .payhere-header {
+    background-color: #2048c1;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .payhere-logo-wrapper {
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+  }
+  
+  .payhere-logo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .payhere-merchant-info {
+    flex: 1;
+  }
+  
+  .merchant-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .order-id {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+  }
+  
+  .amount {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  /* Body Styles */
+  .payhere-body {
+    padding: 20px;
+  }
+  
+  .payment-method-title {
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .payment-category {
+    margin-bottom: 25px;
+  }
+  
+  .category-title {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .payment-methods-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .payment-method-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .payment-method-item:hover {
+    border-color: #2048c1;
+    background-color: #f0f4ff;
+  }
+  
+  .payment-method-item.selected {
+    border-color: #2048c1;
+    background-color: rgba(32, 72, 193, 0.05);
+    box-shadow: 0 0 0 2px rgba(32, 72, 193, 0.2);
+  }
+  
+  .payment-icon {
+    max-width: 100%;
+    max-height: 30px;
+  }
+  
+  /* Pay Now Button */
+  .payhere-pay-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .payhere-pay-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Footer Styles */
+  .payhere-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .secured-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .payhere-footer-logo {
+    height: 20px;
+  }
+  
+  .central-bank-text {
+    font-size: 11px;
+    color: #888;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 576px) {
+    .payhere-popup-container {
+      width: 90%;
+    }
+  
+    .payment-methods-row {
+      justify-content: center;
+    }
+  }
+  
+  .close-btn{
+    border: none;
+  }
+  .close-btn:hover{
+    background-color: #a99d9d;
+  }
+
+/* card fields css */
+
+.card-details-form {
+  margin-top: 20px;
+}
+
+.card-details-form .form-group {
+  margin-bottom: 15px;
+}
+
+.card-details-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.success-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.success-icon img {
+  height: 50px;
+  width: auto;
+}
+.success-message{
+  text-align: center;
+}
+.payment-success {
+  display: flex;
+  flex-direction: column;  /* Stack the elements vertically */
+  justify-content: center;
+  align-items: center;
+  text-align: center;  /* Center the text horizontally */
+}
+
+.payment-success .btn {
+  margin-top: 20px; /* Optional: adds spacing above the button */
+}
+
+
+/* Card details form styling */
+.card-details-form .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .card-details-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .card-details-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Change color when input is focused */
+  .card-details-form input:focus {
+    border-color: #0d6efd; /* Bootstrap primary color */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Bootstrap focus shadow */
+    outline: none;
+  }
+  
+  /* Add a highlight effect for active input */
+  .card-details-form input:focus-visible {
+    border-color: #0d6efd;
+    outline: none;
+  }
+  
+  /* Optional: Add different colors for different fields */
+  .card-details-form #cardNumber:focus {
+    background-color: white !important;
+    color: black;
+  }
+  
+  .card-details-form #expiryDate:focus {
+    background-color: white !important;
+    color: black;
+  }
+  
+  .card-details-form #cvv:focus {
+    background-color: white !important;
+    color: black;
+  }

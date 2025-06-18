@@ -1,0 +1,465 @@
+/* Filtering options CSS */
+.mapBackground{
+    /* background-color: rgb(12, 12, 57); */
+    background-color: white;
+    min-height: 200vh;
+}
+
+.locLabel{
+    /* color: rgb(243, 221, 177); */
+    color: rgb(11, 11, 80);
+    font-weight: bold;
+    font-size: large;
+}
+.mapForm{
+    padding-top: 10%;
+    padding-left: 30px;
+    margin-left: 6%;
+    width: 50%;
+}
+.mapForm select{
+    margin-top: 5px;
+    border-radius: 20px;
+    padding: 6px;
+    border: 2px solid white;
+    color: rgb(47, 44, 44);
+    /* background-color: rgb(3, 32, 58); */
+    background-color: rgb(200, 217, 230);
+    cursor: pointer;
+}
+.mapForm select option{
+    background-color: white;
+    color: black;
+}
+.roomButton{
+    margin-top: 5px;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 6px;
+    border-style: none;
+    /* background-color: rgb(28, 71, 101);
+    color: white; */
+    background-color: rgb(200, 217, 230);
+    color: rgb(47, 44, 44);
+
+}
+/* budget slider css */
+.monthly-budget-filter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    /* color: #fbfbfb; */
+    color: rgb(47, 44, 44);
+}
+
+.budget{
+    width: 30%;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(200, 217, 230);
+    border-radius: 6px;
+    height: 5px;
+    border-style: none;
+    transition: 0.5s;
+}
+
+.budget::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    /* background: white; */
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+/* Changing the thumb (pointer) color */
+.budget::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgb(76, 136, 180);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -7px;
+}
+
+
+
+.locLabel1{
+    /* color: white; */
+}
+.bed-bath-button{
+    margin: 5px;
+    border-style: none;
+    /* background-color: rgb(28, 71, 101); */
+    background-color:  rgb(200, 217, 230);
+    /* color: white; */
+    color: rgb(47, 44, 44) ;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+}
+.amenitiesContainer{
+    display: flex;
+    flex-direction: column;
+}
+.amenities-item{
+    display: flex;
+    align-items: center;
+}
+.amenititesLabel{
+    /* color: white; */
+    color: rgb(47, 44, 44);
+    margin-right: 10px;
+    width: 100px;
+}
+.amenities-item input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    /* border: 2px solid white; */
+    border: 2px solid rgb(47, 44, 44);
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.amenities-item input[type="checkbox"]::after{
+    content: '√';
+    /* color: white !important; */
+    color: rgb(47, 44, 44) !important;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.amenities-item input[type="checkbox"]:checked::after{
+    opacity: 1;
+}
+
+/* Map CSS */
+.mapouter{
+    position:relative;
+    text-align:right;
+    margin-top: 10%;
+    margin-right: 7%;
+}
+.gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    width:600px;
+    height:400px;
+}
+.gmap_iframe {
+    width:600px!important;
+    height:400px!important;
+}
+.container-form-map{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-button{
+    /* background-color: white ; */
+    background-color:  rgb(200, 217, 230);
+    color: rgb(47, 44, 44) ;
+    padding: 5px 6px 6px 8px;
+    border-radius: 15px;
+    border-style: none;
+    font-weight: 600;
+}
+.filters-button:hover{
+    background-color: skyblue;
+}
+
+/* Sliding bar CSS */
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.location-slider{
+    margin-top: 10%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* background-color: rgb(12, 12, 57); */
+    background-color: rgb(200, 217, 230);
+    padding: 8px 0px;
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+.location-slider h1{
+    text-align: center;
+    /* color: #ffffff; */
+    color:  rgb(73, 68, 68);
+    font-size: 35px;
+}
+.locations{
+    display: flex;
+    white-space: nowrap;
+    gap: 20px;
+    flex-shrink: 0;
+    width: 190%;
+    position: relative;
+}
+
+.location-slider::before, 
+.location-slider::after{
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    content: " ";
+    z-index: 2;
+}
+
+
+.location-slider::before{
+    left: 0;
+    /* background: linear-gradient(to left,  rgb(12, 12, 57),  rgb(12, 12, 57));   */
+    background: linear-gradient(to left,  rgb(200, 217, 230),  rgb(220, 231, 239));
+}
+
+.location-slider::after{
+    right: 0;
+    background: linear-gradient(to right,  rgb(200, 217, 230),  rgb(200, 217, 230));  
+    /* background: linear-gradient(to right, rgba(255,255,255,0), rgb(31, 55, 91));   */
+}
+
+
+.location-slider:hover .slide-wrapper{
+    animation-play-state: paused;
+}
+    
+
+.slide-wrapper{
+    display: flex;
+    width: 100%;
+    animation: 17s slide linear infinite;
+}
+
+.locations h2 {
+    font-size: 21px;
+    /* color: white; */
+    color: rgb(73, 68, 68);
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* Ensure horizontal layout */
+  }
+  
+  .location-icon {
+    margin-right: 8px; /* Add space between icon and text */
+    display: inline-flex; /* Ensure icon is treated as inline element */
+    vertical-align: middle; /* Align icon with text */
+  }
+  
+  .locations h2 span {
+    display: inline-block; /* Ensure text is treated as inline element */
+    vertical-align: middle; /* Align text with icon */
+  }
+.fa{
+    color: rgb(255, 0, 0);
+    height: 20px;
+}
+
+h2 i {
+    margin-right: 8px;
+    color: #555; /* or your desired color */
+}
+
+
+/* MEdia queries for map and location slider */
+@media screen and (max-width: 1024px) {
+    .mapForm {
+        width: 70%;
+        padding-left: 15px;
+        margin-left: 4%;
+    }
+
+    .mapouter {
+        margin-top: 5%;
+        margin-right: 2%;
+        text-align: center;
+    }
+
+    .gmap_canvas {
+        width: 100%;
+        height: 350px;
+    }
+
+    .gmap_iframe {
+        width: 100%!important;
+        height: 350px!important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mapForm {
+        width: 90%;
+        padding-left: 10px;
+        margin-left: 3%;
+    }
+
+    .mapouter {
+        width: 100%;
+        margin-top: 3%;
+        text-align: center;
+    }
+
+    .gmap_canvas {
+        width: 100%;
+        height: 300px;
+    }
+
+    .gmap_iframe {
+        width: 100%!important;
+        height: 300px!important;
+    }
+
+    .container-form-map {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mapForm {
+        width: 100%;
+        padding: 5px;
+        margin-left: 0;
+    }
+
+    .mapouter {
+        width: 100%;
+        margin-top: 2%;
+    }
+
+    .gmap_canvas {
+        width: 100%;
+        height: 250px;
+    }
+
+    .gmap_iframe {
+        width: 100%!important;
+        height: 250px!important;
+    }
+}
+
+/* Location Slider Banner */
+@media screen and (max-width: 1024px) {
+    .locations {
+        width: 220%;
+        gap: 50px;
+    }
+
+    .slide-wrapper {
+        width: 85%;
+        animation-duration: 16s;
+    }
+
+    .location-slider h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .locations h2 {
+        font-size: 22px;
+    }
+
+    .location-slider::before, 
+    .location-slider::after {
+        width: 100px;  /* Reduce the width of fade effect */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .locations {
+        width: 250%;
+        gap: 40px;
+    }
+
+    .slide-wrapper {
+        width: 95%;
+        animation-duration: 18s;
+    }
+
+    .location-slider h1 {
+        font-size: 20px;
+    }
+
+    .locations h2 {
+        font-size: 18px;
+    }
+
+    .location-slider::before, 
+    .location-slider::after {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .locations {
+        width: 280%;
+        gap: 30px;
+    }
+
+    .slide-wrapper {
+        width: 100%;
+        animation-duration: 20s;
+    }
+
+    .location-slider h1 {
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    .locations h2 {
+        font-size: 16px;
+    }
+
+    .location-slider::before, 
+    .location-slider::after {
+        width: 50px;
+    }
+}
+
+/* Leaflet map */
+.leaflet-container{
+    margin-top: 10%;
+    margin-right: 5%;
+    height: 600px !important;
+    width: 90% !important;
+}
+.marker-heading {
+    display: flex;
+    align-items: flex-start;       
+    justify-content: flex-end;     
+    margin-right: 5%;
+    margin-top: -30px;            
+    font-size: medium;
+    color: rgb(73, 68, 68);
+    gap: 8px;                      
+}
+
+.marker {
+    height: 40px;
+    width: 50px;
+    margin: 0;                     
+}

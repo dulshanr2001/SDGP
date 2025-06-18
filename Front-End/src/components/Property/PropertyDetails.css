@@ -1,0 +1,419 @@
+.property-details-container {
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.property-info-section {
+  flex: 1;
+  background-color: #e3e3e3;
+  color: #d3d5d6;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.property-image-section {
+  flex: 1.5;
+  position: relative;
+  height: 100vh;
+}
+
+.property-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: 80px;
+  color: #000000;
+}
+
+.property-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #2F4156;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.property-type-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.property-type {
+  background-color: rgba(245, 239, 235, 0.2);
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.property-type:hover {
+  background-color: rgba(245, 239, 235, 0.3);
+}
+
+.property-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.property-quick-info {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #31393f;
+  transition: transform 0.3s;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+}
+
+.info-item span {
+  text-align: center;
+}
+
+.booking-section {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.book-tour-btn, .book-now, .msg-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #218ec1be;
+  border: none;
+  color: #2F4156;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+
+.book-tour-btn:hover {
+  background: #2F4156;
+  color: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-now:hover {
+  background: #1eac50;
+  color: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.msg-btn:hover {
+  background: #2f4156;
+  color: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-section {
+  display: flex;
+  gap: 1rem; 
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.rating-container .star {
+  color: #FFD700;
+}
+
+.property-description,
+.property-facilities,
+.property-university {
+  margin-bottom: 2rem;
+}
+
+.property-description h2,
+.property-facilities h2,
+.property-university h2,
+.property-map h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(200, 217, 230, 0.3);
+  padding-bottom: 0.5rem;
+  color: #322f49;
+}
+
+.property-description p,
+.property-university p {
+  line-height: 1.6;
+  color: #697177;
+}
+
+.property-facilities ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.property-facilities li {
+  padding: 8px 12px;
+  background-color: rgba(200, 217, 230, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.property-facilities li:hover {
+  background-color: rgba(200, 217, 230, 0.2);
+  transform: translateX(5px);
+}
+
+.property-facilities li::before {
+  content: "✓";
+  color: #343b40;
+}
+
+.property-map iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-slider {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(47, 65, 86, 0.7);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.slider-button:hover {
+  background: rgba(47, 65, 86, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-button.prev {
+  left: 1rem;
+}
+
+.slider-button.next {
+  right: 1rem;
+}
+
+.image-counter {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(47, 65, 86, 0.8);
+  color: #F5EFEB;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.image-counter:hover {
+  transform: scale(1.05);
+}
+
+.no-image {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #C8D9E6;
+  color: #2F4156;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .property-details-container {
+    flex-direction: column;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .property-image-section {
+    height: 300px;
+  }
+  
+  .property-info-section {
+    padding: 1.5rem;
+  }
+  
+  .property-header h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  
+  .property-quick-info {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .book-tour-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .rating-container {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.tour-booking-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tour-booking-modal h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.modal-form {
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input[type="date"],
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: black;
+}
+
+.property-tour-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.property-tour-info p {
+  margin: 0.5rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn, .book-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #e9ecef;
+}
+
+.book-btn {
+  background-color: #2F4156;
+  border: none;
+  color: white;
+}
+
+.book-btn:hover {
+  background-color: #2a3847;
+}
+
+.book-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

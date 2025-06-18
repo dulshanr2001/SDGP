@@ -1,0 +1,335 @@
+/* Modern aesthetic styling for LandlordSignUp.css */
+.signup-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/landlord.bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 2rem 2rem 2rem;
+    min-height: 100vh;
+    box-shadow: 0 10px 30px rgb(0, 0, 0);
+  }
+  
+  /* Background Effect */
+  .signup-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .signup-form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 20px rgba(0, 0, 0, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 550px;
+    animation: float 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes float {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Progress Tracker */
+  .progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 0 10px;
+  }
+  
+  .progress-tracker::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background-color: rgba(28, 34, 55, 0.1);
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .progress-step {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid rgba(28, 34, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(28, 34, 55, 0.5);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  
+  .progress-step.active {
+    background-color: #1c2237;
+    border-color: #1c2237;
+    color: white;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+  }
+  
+  .form-section {
+    margin-bottom: 32px;
+  }
+  
+  .form-section h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 28px;
+    background: linear-gradient(135deg, #1c2237 0%, #2a3349 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  
+  .rules-container {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #1c2237 rgba(28, 34, 55, 0.08);
+  }
+  
+  .rules-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .rules-container::-webkit-scrollbar-track {
+    background: rgba(28, 34, 55, 0.08);
+    border-radius: 3px;
+  }
+  
+  .rules-container::-webkit-scrollbar-thumb {
+    background-color: #1c2237;
+    border-radius: 3px;
+  }
+  
+  .rule-item {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .rule-item:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .rule-item h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #1c2237;
+    font-weight: 600;
+  }
+  
+  .rule-item p {
+    font-size: 11px;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    font-size: 0.95rem;
+    color: #1c2237;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  
+  .input-group input {
+    padding: 16px 20px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    border-radius: 16px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    color: black;
+  }
+  
+  .input-group input:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border-color: #1c2237;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+    background: rgb(9, 3, 63);
+    color: white;
+  }
+  
+  .date-inputs {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .date-inputs input {
+    width: 30%;
+    padding: 14px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    border-radius: 16px;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .date-inputs input:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .date-inputs input:focus {
+    outline: none;
+    border-color: #1c2237;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+    background: rgb(9, 3, 63);
+    color: white;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+  }
+  
+  .checkbox-container:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #1c2237;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .checkbox-container span {
+    font-size: 0.95rem;
+    color: #1c2237;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 16px;
+  }
+  
+  .back-button, .next-button, .verification-button {
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button {
+    background: rgba(28, 34, 55, 0.08);
+    color: #1c2237;
+    border: none;
+  }
+  
+  .back-button:hover:not(:disabled) {
+    background: rgba(28, 34, 55, 0.12);
+    transform: translateY(-2px);
+  }
+  
+  .next-button, .verification-button {
+    background: linear-gradient(135deg, #1c2237 0%, #2a3349 100%);
+    color: white;
+    border: none;
+    flex-grow: 1;
+    box-shadow: 0 4px 12px rgba(28, 34, 55, 0.2);
+  }
+  
+  .next-button:hover:not(:disabled), .verification-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(28, 34, 55, 0.3);
+  }
+  
+  .next-button:active:not(:disabled), .verification-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(28, 34, 55, 0.2);
+  }
+  
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  input[type="file"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px dashed rgba(28, 34, 55, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="file"]:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  /* New verification related styles */
+  .verification-success {
+    margin: 20px 0;
+    color: green;
+    text-align: center;
+  }

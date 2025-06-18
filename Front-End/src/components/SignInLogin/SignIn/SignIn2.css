@@ -1,0 +1,294 @@
+/* Select Input Styling */
+.select-input {
+    padding: 16px 20px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    border-radius: 16px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    color: black;
+    width: 100%;
+    appearance: none;
+  }
+  
+  .select-input:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .select-input:focus {
+    outline: none;
+    border-color: #1c2237;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+    background-color: rgb(9, 3, 63);
+    color: white;
+  }
+  
+  .select-input option {
+    background-color: white;
+    color: black;
+  }
+  /* Main Container */
+  .signin-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    padding-top: 90px;
+    height: 50px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/background2.jpeg') !important;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  
+  /* Content Box */
+  .signin-content-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 50px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 20px rgba(0, 0, 0, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 450px;
+    animation: float 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes float {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  .signin-content-box h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Form */
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Form Groups */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .form-group label {
+    font-size: 0.85rem;
+    color: #1c2237;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  
+  .form-group input {
+    padding: 16px 20px;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    border-radius: 16px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    color: black;
+  }
+  
+  .form-group input:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #1c2237;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+    background: rgb(9, 3, 63);
+    color: white;
+  }
+  
+  /* Date of Birth (DOB) Section */
+  .dob-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .dob-fields {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .dob-fields input {
+    width: 30%;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.8rem;
+    border: 2px solid rgba(28, 34, 55, 0.08);
+    transition: all 0.3s ease;
+    color: #000;
+  }
+  
+  .dob-fields input:hover {
+    border-color: rgba(28, 34, 55, 0.2);
+  }
+  
+  .dob-fields input:focus {
+    outline: none;
+    border-color: #1c2237;
+    box-shadow: 0 0 0 4px rgba(28, 34, 55, 0.1);
+    background: rgb(9, 3, 63);
+    color: white;
+  }
+  
+  /* Button */
+  .signin-button {
+    background: linear-gradient(135deg, #1c2237 0%, #2a3349 100%);
+    color: white;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(28, 34, 55, 0.2);
+  }
+  
+  .signin-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(28, 34, 55, 0.3);
+  }
+  
+  .signin-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(28, 34, 55, 0.2);
+  }
+  
+  /* Additional Options */
+  .additional-options {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .additional-options p {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.8rem;
+  }
+  
+  .additional-options span {
+    color: #1c2237;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    margin-left: 5px;
+  }
+  
+  .additional-options span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(135deg, #1c2237 0%, #2a3349 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .additional-options span:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Error States */
+  .form-group input.error {
+    border-color: #e53e3e;
+    background-color: #fff5f5;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  
+  /* Success States */
+  .form-group input.success {
+    border-color: #38a169;
+  }
+  
+  /* Loading State */
+  .signin-button.loading {
+    background: linear-gradient(135deg, #2a3349 0%, #1c2237 100%);
+    opacity: 0.8;
+    cursor: wait;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .signin-content-box {
+        padding: 40px 24px;
+    }
+  
+    .signin-content-box h1 {
+        font-size: 2.2rem;
+    }
+  
+    .form-group input {
+        padding: 14px 16px;
+    }
+  
+    .signin-button {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+  
+    .dob-fields input {
+        width: 30%;
+        padding: 12px;
+    }
+  }
+  
+  /* Hover Effect on Form */
+  .signin-content-box:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Background Effect */
+  .signin-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  

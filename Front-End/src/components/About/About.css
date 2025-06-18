@@ -1,0 +1,333 @@
+.about-background{
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.about-background h1 {
+    /* color: rgb(243, 221, 177); */
+    color: black;
+    text-align: center;
+    margin-top: 2%;
+}
+.about-img{
+    max-width: 50%;
+    opacity: 1;
+    border-radius: 250px 0px 0px 0px;
+    flex: 1;
+}
+.about-content{
+    margin-top: 15px;
+    box-shadow: 10px 8px 30px rgba(195, 190, 190, 0.8);
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: aliceblue;
+}
+.about-content p{
+    flex: 1.5;
+    padding-left: 30px;
+    text-align: left;
+    font-size: 22px;
+}
+
+.mission-h1{
+    margin-top: 10% !important;
+}
+.mission-p{
+    color: rgb(94, 96, 103);
+    text-align: center;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+
+.about-search{
+    border: 1px solid aliceblue;
+    padding: 20px;
+    background-color: aliceblue;
+    /* box-shadow: 5px 5px 10px rgba(238, 240, 248, 0.8); */
+    border-radius: 30px;
+    text-align: center;
+    width: 400px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.about-search h2, .negotiation h2, .paper h2{
+    font-weight: bold;
+}
+
+.search-icon{
+    height: 40px;
+}
+.paper-icon{
+    height: 50px;
+}
+
+.negotiation{
+    border: 1px solid aliceblue;
+    padding: 20px;
+    background-color: aliceblue;
+    /* box-shadow: 5px 5px 10px rgba(238, 240, 248, 0.8); */
+    border-radius: 30px;
+    text-align: center;
+    width: 400px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.paper{
+    border: 1px solid aliceblue;
+    padding: 20px;
+    background-color: aliceblue;
+    /* box-shadow: 5px 5px 10px rgba(238, 240, 248, 0.8); */
+    border-radius: 30px;
+    text-align: center;
+    width: 400px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-search:hover , .negotiation:hover , .paper:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(198, 216, 216, 0.985);
+}
+.about-boxes{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 90px;
+}
+
+/* Our Team CSS */
+.members-p{
+    color: rgb(94, 96, 103);
+    text-align: center;
+    margin-top: 10px;
+    font-size: 22px;
+    margin-bottom: 100px; 
+}
+
+.members h2{
+    text-align: center;
+}
+
+.wrapper .title{
+    text-align: center;
+}
+.title h4{
+    color: black;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    word-wrap: break-word;
+}
+
+.wrapper .card-container{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+.card{
+    width: calc(33.33% -20px);
+}
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.card-container .card{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 30px -20px rgba(0,0,0,0.5), inset 0 0 0 1000px rgba(67,52,109, .6);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card .image1, .image1 img{
+    width: 100%;
+    height: 100%;
+}
+.card .content{
+    position: absolute;
+    bottom: -160px;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -10px 10px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    transition: bottom 0.5s;
+    transition-delay: 0.6s;
+}
+.card:hover .content{
+    bottom: 0;
+    transition-delay: 0s ;
+}
+.content h5{
+    text-align: center;
+    margin: 20px 0 15px;
+    transition: 0.3s;
+    transition-delay: 0.4s;
+    opacity: 0;
+    transform: translateY(-20px);
+    color: white;
+}
+.card:hover .content h5{
+    opacity: 1;
+    transform: translateY(0)
+}
+
+
+/* Media queries */
+@media screen and (max-width: 1024px) {
+    .about-background h1 {
+        font-size: 30px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img {
+        max-width: 70%;
+        border-radius: 200px 0px 0px 0px;
+    }
+
+    .about-content p {
+        max-width: 90%;
+        font-size: 22px;
+        padding-left: 0;
+    }
+
+    .mission-p {
+        font-size: 20px;
+    }
+
+    .about-boxes {
+        gap: 20px;
+    }
+
+    .about-search, .negotiation, .paper {
+        width: 250px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .about-search:hover , .negotiation:hover , .paper:hover{
+        transform: scale(1.1);
+        box-shadow: 0px 5px 15px rgba(198, 216, 216, 0.985);
+    }
+
+}
+
+/* Small Tablets & Large Phones (768px and below) */
+@media screen and (max-width: 768px) {
+    .about-background h1 {
+        font-size: 26px;
+        margin-top: 20% !important;
+    }
+
+    .about-content {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .about-img {
+        max-width: 80%;
+        border-radius: 180px 0px 0px 0px;
+    }
+
+    .about-content p {
+        max-width: 100%;
+        font-size: 20px;
+    }
+
+    .mission-p {
+        font-size: 18px;
+    }
+
+    .about-boxes {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .about-search, .negotiation, .paper {
+        width: 90%;
+        min-height: 220px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .about-search:hover , .negotiation:hover , .paper:hover{
+        transform: scale(1.1);
+        box-shadow: 0px 5px 15px rgba(198, 216, 216, 0.985);
+    }
+}
+
+/* Mobile Screens (480px and below) */
+@media screen and (max-width: 480px) {
+    .about-background {
+        padding: 10px;
+    }
+
+    .about-background h1 {
+        font-size: 22px;
+        margin-top: 3%;
+    }
+
+    .about-content {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .about-img {
+        max-width: 90%;
+        border-radius: 150px 0px 0px 0px;
+    }
+
+    .about-content p {
+        font-size: 18px;
+        padding: 0 10px;
+    }
+
+    .mission-p {
+        font-size: 16px;
+    }
+
+    .about-boxes {
+        gap: 10px;
+    }
+
+    .about-search, .negotiation, .paper {
+        width: 100%;
+        min-height: 200px;
+        padding: 15px;
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+
+    }
+    .about-search:active , .negotiation:active , .paper:active{
+        transform: scale(1.1);
+        box-shadow: 0px 5px 15px rgba(198, 216, 216, 0.985);
+    }
+}

@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 // import { propertyData } from "../../data/propertyData";
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { Eye, RotateCw, Search, Star, Users } from "lucide-react";
+import { Eye, RotateCw, Search, Star, Users,Heart } from "lucide-react";
 import apiService from "../../services/api-service";
 import { getImage } from "../../utils/image-resolver";
 
@@ -186,6 +186,7 @@ function Home() {
                   <span><Eye size={16} /> {property.views}</span>
                   <span><Users size={16} /> {property.inquiries}</span>
                   <span><Star size={16} /> {property.rating}</span>
+                  <span><Heart size={16} /> {property.favourites} </span>
                 </div>
                 <div className="status-badge">{property.status}</div>
               </div>

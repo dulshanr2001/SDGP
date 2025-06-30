@@ -167,7 +167,7 @@ function Home() {
             <button className="search-button flex gap-2 items-center" onClick={resetSearch}>
               <RotateCw size={18} />
             </button>
-            <button className="search-button flex gap-2 items-center" onClick={handleFavourites}>
+            <button className="search-button flex gap-2 items-center" onClick={handleViewFavourites}>
               <Heart size={18} />
               View Favourites
             </button>

@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-// import { propertyData } from "../../data/propertyData";
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { Eye, RotateCw, Search, Star, Users,Heart } from "lucide-react";
+import { Eye, RotateCw, Search, Star, Users, Heart } from "lucide-react";
 import apiService from "../../services/api-service";
 import { getImage } from "../../utils/image-resolver";
 
@@ -52,6 +51,10 @@ function Home() {
 
   const handlePropertyClick = (propertyId) => {
     navigate(`/property/${propertyId}`);
+  };
+
+  const handleViewFavourites = () => {
+    navigate('/favourites');
   };
 
   const fetchProperties = async () => {
@@ -114,7 +117,7 @@ function Home() {
                   </option>
                   <option value="Bambalapitiya">Colombo</option>
                   <option value="Wallewatta">Dehiwala</option>
-                  <option value="Boralesgamuwa">Boralesgamuwa</option>
+                  <option value="Boardwalk">Boralesgamuwa</option>
                   <option value="Kirulapone">Kirulapone</option>
                   <option value="Mount-Lavinia">Mount Lavinia</option>
                 </select>
@@ -162,7 +165,11 @@ function Home() {
               Search Now
             </button>
             <button className="search-button flex gap-2 items-center" onClick={resetSearch}>
-            <RotateCw />
+              <RotateCw size={18} />
+            </button>
+            <button className="search-button flex gap-2 items-center" onClick={handleViewFavourites}>
+              <Heart size={18} />
+              View Favourites
             </button>
           </div>
         </div>
@@ -177,20 +184,20 @@ function Home() {
           <div className="property-grid min-h-[60vh]" style={{ padding: "10px" }}>
             {propertyData.map((property) => (
               <div key={property.id} className="property-card" onClick={() => handlePropertyClick(property.id)}>
-              <img src={getImage(property)} alt={property.title} style={{margin: 0}}/>
-              <div className="property-info">
-                <h3>{property.title}</h3>
-                <p className="location">{property.location}</p>
-                <p className="price">{property.price} LKR</p>
-                <div className="property-stats">
-                  <span><Eye size={16} /> {property.views}</span>
-                  <span><Users size={16} /> {property.inquiries}</span>
-                  <span><Star size={16} /> {property.rating}</span>
-                  <span><Heart size={16} /> {property.favourites} </span>
+                <img src={getImage(property)} alt={property.title} style={{margin: 0}}/>
+                <div className="property-info">
+                  <h3>{property.title}</h3>
+                  <p className="location">{property.location}</p>
+                  <p className="price">{property.price} LKR</p>
+                  <div className="property-stats">
+                    <span><Eye size={16} /> {property.views}</span>
+                    <span><Users size={16} /> {property.inquiries}</span>
+                    <span><Star size={16} /> {property.rating}</span>
+                    <span><Heart size={16} /> {property.favourites} </span>
+                  </div>
+                  <div className="status-badge">{property.status}</div>
                 </div>
-                <div className="status-badge">{property.status}</div>
               </div>
-            </div>
             ))}
           </div>
         )}

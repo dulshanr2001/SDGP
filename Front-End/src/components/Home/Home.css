@@ -1,5 +1,3 @@
-
-
 .background-home{
   position: relative;
   background-color: white;
@@ -10,35 +8,29 @@
 
 .homeBackground{
   position: absolute;
-  /* margin-top: 190px; */
   top: -80px;
   width: 100%;
   object-fit: cover;
   height: 90% !important;
   z-index: -1;
-  
 }
 
 .main{
   color: rgb(186, 219, 244);
   z-index: 1;
-  /* position: relative; */
-  /* top: 150px; */
   text-align: start;
   margin-left: 8%;
   font-weight: bold;
 }
+
 .mainsub{
   color: white;
-  /* position: relative; */
-  /* top: 190px; */
   margin-left: 8%;
 }
 
-.searchbar{
+.search-box {
   display: flex;
-  /* background:linear-gradient(135deg, rgba(200,200,200,0.2), white, rgba(255,255,255,0.3)); */
-  background:linear-gradient(135deg, rgba(252, 251, 251, 0.714), white,  rgba(252, 251, 251, 0.714));
+  background: linear-gradient(135deg, rgba(252, 251, 251, 0.714), white, rgba(252, 251, 251, 0.714));
   padding: 30px;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -51,13 +43,21 @@
   gap: 10px;
 }
 
-.fields{
-  display: flex;
-  gap: 50px;
-  justify-content: center;
+.search-input {
   flex-grow: 1;
 }
-.fields select{
+
+.search-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.search-input select {
   background-color: rgb(13, 36, 56);
   color: white;
   border-radius: 20px;
@@ -66,36 +66,43 @@
   outline: none;
   font-weight: bold;
 }
-.fields option{
+
+.search-input select option {
   background-color: white;
   color: black;
 }
 
-.fields select:hover{
+.search-input select:hover {
   background-color: rgb(71, 71, 93);
 }
-.searchButton{
+
+.search-button {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  border-radius: 90%;
-  width: 45px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 10px 20px;
   cursor: pointer;
   outline: none;
   border: none;
   justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: rgb(230, 230, 230);
 }
 
 .mostviewed{
   color: black;
   text-align: center;
   font-weight: bold;
-    
 }
+
 .mostviewed-props{
   background-color: #d3d5d6 !important;
   min-height: 300px;
 }
+
 .mostviewed-props img{
   padding: 20px;
   height: 400px;
@@ -103,9 +110,9 @@
 }
 
 .property-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
 }
 
 .property-card {
@@ -118,79 +125,78 @@ gap: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 30vw;
   margin-top: 100px;
-  height: auto; /* ✅ Let it grow based on content */
-  min-height: 400px; /* ✅ Optional, to avoid too small cards */
+  height: auto;
+  min-height: 400px;
 }
 
 .property-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .property-card img {
-width: 100%;
-height: 200px;
-object-fit: cover;
-border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .property-info {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .property-info h3 {
-margin: 0 0 0.5rem 0;
-color: black;
-font-size: 1.25rem;
-font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .location {
-color: #64748b;
-margin: 0;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-font-size: 0.9rem;
-font-weight: 600;
+  color: #64748b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .price {
-color: black;
-font-weight: 700;
-margin: 1rem 0;
-font-size: 1.25rem;
+  color: black;
+  font-weight: 700;
+  margin: 1rem 0;
+  font-size: 1.25rem;
 }
 
 .property-stats {
-display: flex;
-gap: 1.5rem;
-margin: 1rem 0;
-padding: 1rem 0;
-border-top: 1px solid #e2e8f0;
-border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .property-stats span {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-color: #64748b;
-font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
 }
 
 .status-badge {
-display: inline-block;
-padding: 0.35rem 1rem;
-background-color: black;
-color: white;
-border-radius: 50px;
-font-size: 0.875rem;
-font-weight: 500;
-text-transform: uppercase;
-letter-spacing: 1px;
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase Awais, Muhammad;
+  letter-spacing: 1px;
 }
-
 
 .home-container {
   max-width: 1200px;
@@ -198,222 +204,149 @@ letter-spacing: 1px;
   padding: 20px;
 }
 
-
-/* .properties-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-} */
-
-/* .property-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s;
-} */
-
-/* .property-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-} */
-
-/* .property-image {
-  width: 100px;
-  height: 250px;
-  object-fit: cover;
-  padding-right:1000px;
-} */
-
-.property-card-details {
-  padding: 15px;
-}
-
-.property-card-details h3 {
-  margin-bottom: 10px;
-}
-
-.property-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.price {
-  font-weight: bold;
-  color: #007bff;
-}
-
-.rating {
-  color: gold;
-}
-
 /* Responsive CSS */
 @media (max-width: 767px) {
   .background-home {
-      min-height: 50vh; /* Ensure full height on mobile */
+    min-height: 50vh;
   }
 
   .homeBackground {
-      top: -40px; /* Adjust for smaller screens */
-      height: 80%; /* Reduce height for mobile */
-      
+    top: -40px;
+    height: 80%;
   }
 
   .main {
-      top: 120px; /* Adjust positioning for mobile */
-      margin-left: 5%; /* Reduce margin for smaller screens */
-      font-size: 1.5rem; /* Adjust font size for mobile */
+    margin-left: 5%;
+    font-size: 1.5rem;
   }
 
   .mainsub {
-      top: 120px; /* Adjust positioning for mobile */
-      margin-left: 5%; /* Reduce margin for smaller screens */
-      font-size: 1rem; /* Adjust font size for mobile */
+    margin-left: 5%;
+    font-size: 1rem;
   }
 
-  .searchbar {
-      width: 80%; /* Increase width for better mobile usability */
-      margin-top: 40%; /* Adjust margin for mobile */
-      padding: 20px; /* Reduce padding for smaller screens */
-      border-radius: 30px; /* Adjust border radius for mobile */
-      margin-left: 8%;
+  .search-box {
+    width: 80%;
+    margin-top: 40%;
+    padding: 20px;
+    border-radius: 30px;
+    margin-left: 8%;
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .fields {
-      flex-direction: column; /* Stack fields vertically on mobile */
-      gap: 15px; /* Reduce gap for smaller screens */
+  .search-input {
+    width: 100%;
   }
 
-  .fields select {
-      width: 100%; /* Full width for mobile */
-      padding: 8px; /* Adjust padding for mobile */
-  }
-
-  .searchButton {
-      width: 40px; /* Adjust button size for mobile */
-      padding: 8px; /* Adjust padding for mobile */
-      margin-left: 40%
+  .search-button {
+    width: 100%;
+    border-radius: 20px;
+    padding: 12px;
   }
 
   .mostviewed {
-      font-size: 1.2rem; /* Adjust font size for mobile */
+    font-size: 1.2rem;
   }
 
   .mostviewed-props img {
-      height: 240px; /* Adjust image height for mobile */
-      margin-left:9%; /* Adjust margin for mobile */
+    height: 240px;
+    margin-left: 9%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .background {
-      min-height: 90vh; /* Adjust height for tablets */
+  .background-home {
+    min-height: 90vh;
   }
 
   .homeBackground {
-      top: -60px; /* Adjust for tablets */
-      height: 85%; /* Adjust height for tablets */
+    top: -60px;
+    height: 85%;
   }
 
   .main {
-      top: 120px; /* Adjust positioning for tablets */
-      margin-left: 2%; /* Adjust margin for tablets */
-      font-size: 2rem; /* Adjust font size for tablets */
+    margin-left: 2%;
+    font-size: 2rem;
   }
 
   .mainsub {
-      top: 160px; /* Adjust positioning for tablets */
-      margin-left: 2%; /* Adjust margin for tablets */
-      font-size: 1.2rem; /* Adjust font size for tablets */
+    margin-left: 2%;
+    font-size: 1.2rem;
   }
 
-  .searchbar {
-      width: 90%; /* Adjust width for tablets */
-      margin-top: 20%; /* Adjust margin for tablets */
-      padding: 20px; /* Adjust padding for tablets */
-      flex-direction: column; /* Change to column layout */
-      gap: 20px; /* Add gap between rows */
-      align-items: stretch; /* Stretch children to full width */
+  .search-box {
+    width: 90%;
+    margin-top: 20%;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
   }
 
-  .fields {
-      flex-direction: row; /* Keep fields in a row */
-      gap: 20px; /* Reduce gap between fields */
-      flex-wrap: wrap; /* Allow fields to wrap to the next line if needed */
+  .search-input {
+    flex: 1 1 calc(50% - 10px);
   }
 
-  .fields select {
-      flex: 1 1 calc(50% - 10px); /* Make each select take 50% width minus gap */
-      padding: 10px; /* Adjust padding for tablets */
-  }
-
-  .searchButton {
-      width: 20%; /* Full width for the button */
-      border-radius: 20px; /* Change to a rectangular shape */
-      padding: 12px; /* Adjust padding for tablets */
-      text-align: center; /* Center the button text */
+  .search-button {
+    width: 20%;
+    border-radius: 20px;
+    padding: 12px;
+    text-align: center;
   }
 
   .mostviewed {
-      font-size: 1.5rem; /* Adjust font size for tablets */
+    font-size: 1.5rem;
   }
 
   .mostviewed-props img {
-      height: 350px; /* Adjust image height for tablets */
-      margin-left: 20%; /* Adjust margin for tablets */
+    height: 350px;
+    margin-left: 20%;
   }
 }
 
 @media (min-width: 1024px) {
-  .background {
-      min-height: 100vh; /* Ensure full height on desktop */
+  .background-home {
+    min-height: 100vh;
   }
 
   .homeBackground {
-      top: -80px; /* Adjust for desktop */
-      height: 90%; /* Adjust height for desktop */
+    top: -80px;
+    height: 90%;
   }
 
   .main {
-      top: 150px; /* Adjust positioning for desktop */
-      margin-left: 8%; /* Adjust margin for desktop */
-      font-size: 2.5rem; /* Adjust font size for desktop */
+    margin-left: 8%;
+    font-size: 2.5rem;
   }
 
   .mainsub {
-      top: 190px; /* Adjust positioning for desktop */
-      margin-left: 8%; /* Adjust margin for desktop */
-      font-size: 1.5rem; /* Adjust font size for desktop */
+    margin-left: 8%;
+    font-size: 1.5rem;
   }
 
-  .searchbar {
-      width: 85%; /* Adjust width for desktop */
-      margin-top: 16%; /* Adjust margin for desktop */
-      padding: 20px; /* Adjust padding for desktop */
+  .search-box {
+    width: 85%;
+    margin-top: 16%;
+    padding: 20px;
   }
 
-  .fields {
-      gap: 30px; /* Adjust gap for desktop */
+  .search-input {
+    flex: 1;
   }
 
-  .fields select {
-      padding: 10px; /* Adjust padding for desktop */
-  }
-
-  .searchButton {
-      width: 45px; /* Adjust button size for desktop */
-      padding: 10px; /* Adjust padding for desktop */
+  .search-button {
+    width: auto;
+    padding: 10px 20px;
   }
 
   .mostviewed {
-      font-size: 2rem; /* Adjust font size for desktop */
+    font-size: 2rem;
   }
 
   .mostviewed-props img {
-      height: 400px; /* Adjust image height for desktop */
-      margin-left: 30%; /* Adjust margin for desktop */
+    height: 400px;
+    margin-left: 30%;
   }
 }
 

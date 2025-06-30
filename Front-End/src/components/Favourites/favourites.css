@@ -1,0 +1,56 @@
+.favourites-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.favourites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.favourite-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.favourite-card:hover {
+  transform: translateY(-5px);
+}
+
+.favourite-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.favourite-info {
+  padding: 1rem;
+}
+
+.favourite-address {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.favourite-price {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.remove-favourite-btn {
+  background: transparent;
+  border: none;
+  color: #ff4d4f;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.remove-favourite-btn:hover {
+  text-decoration: underline;
+}

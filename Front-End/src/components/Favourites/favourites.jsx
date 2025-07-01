@@ -1,60 +1,28 @@
-import { Heart, Trash2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import apiService from '../../services/api-service';
-import useAuthStore from '../../store/auth-store';
-import './Favourites.css';
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Eye, Star, Users, Heart } from "lucide-react";
+import apiService from "../../services/api-service";
+import { getImage } from "../../utils/image-resolver";
+import "./Home.css"; // Reuse Home.css for consistent styling
 
-const Favourites = () => {
+function Favourites() {
   const navigate = useNavigate();
-  const authStore = useAuthStore();
-  const user = authStore.user;
-  const [favourites, setFavourites] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [favouriteProperties, setFavouriteProperties] = useState([]);
 
-  // Fetch favorite properties on component mount
   useEffect(() => {
-    if (!user || user.userType === 'LANDLORD') {
-      toast.error('Only students can view favorites');
-      navigate('/');
-      return;
-    }
     fetchFavourites();
-  }, [user, navigate]);
+  }, []);
 
   const fetchFavourites = async () => {
-    setIsLoading(true);
     try {
-      const response = await apiService.get(`/favourites/${user.id}`);
-      if (response.status === 200) {
-        setFavourites(response.data);
-      } else {
-        toast.error('Failed to fetch favorites');
+      const rs = await apiService.get("/properties/favourites");
+      if (rs.status === 200) {
+        const data = rs.data;
+        setFavouriteProperties(data);
       }
     } catch (error) {
-      console.error('Error fetching favorites:', error);
-      toast.error('An error occurred while fetching favorites');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const removeFavourite = async (propertyId) => {
-    setIsLoading(true);
-    try {
-      const response = await apiService.delete(`/favourites/${user.id}/${propertyId}`);
-      if (response.status === 200) {
-        setFavourites(favourites.filter(fav => fav.id !== propertyId));
-        toast.success('Removed from favorites');
-      } else {
-        toast.error('Failed to remove from favorites');
-      }
-    } catch (error) {
-      console.error('Error removing favorite:', error);
-      toast.error('An error occurred while removing favorite');
-    } finally {
-      setIsLoading(false);
+      console.error("Error fetching favourites:", error);
+      setFavouriteProperties([]);
     }
   };
 
@@ -62,43 +30,44 @@ const Favourites = () => {
     navigate(`/property/${propertyId}`);
   };
 
-  if (isLoading) {
-    return <div className="favourites-container">Loading...</div>;
-  }
-
   return (
-    <div className="favourites-container">
-      <h1>My Favourites</h1>
-      {favourites.length === 0 ? (
-        <p className="no-favourites">No favourite properties found.</p>
-      ) : (
-        <div className="favourites-grid">
-          {favourites.map(property => (
-            <div key={property.id} className="favourite-card">
-              <img
-                src={property.image ? `http://localhost:8080/api/properties/images/${property.image}` : '/fallback-property.jpg'}
-                alt={property.title}
-                className="favourite-image"
-                onClick={() => handlePropertyClick(property.id)}
-              />
-              <div className="favourite-info">
-                <h3>{property.title}</h3>
-                <p className="favourite-address">{property.address}</p>
-                <p className="favourite-price">LKR {property.price.toLocaleString()}</p>
-                <button
-                  className="remove-favourite-btn"
-                  onClick={() => removeFavourite(property.id)}
-                  disabled={isLoading}
-                >
-                  <Trash2 size={20} /> Remove
-                </button>
+    <div>
+      <div className="background-home flex flex-col gap-4 py-4 px-4">
+        <h1 className="main">Your Favourite Properties</h1>
+        <h4 className="mainsub">
+          Browse through your saved accommodations, ready for you to explore or book!
+        </h4>
+      </div>
+
+      <div className="mostviewed-props">
+        {favouriteProperties && favouriteProperties.length === 0 ? (
+          <div className="flex justify-center h-[60vh] min-h-[60vh] font-bold" style={{ paddingTop: "100px" }}>
+            <p>No Favourites Yet</p>
+          </div>
+        ) : (
+          <div className="property-grid min-h-[60vh]" style={{ padding: "10px" }}>
+            {favouriteProperties.map((property) => (
+              <div key={property.id} className="property-card" onClick={() => handlePropertyClick(property.id)}>
+                <img src={getImage(property)} alt={property.title} style={{ margin: 0 }} />
+                <div className="property-info">
+                  <h3>{property.title}</h3>
+                  <p className="location">{property.location}</p>
+                  <p className="price">{property.price} LKR</p>
+                  <div className="property-stats">
+                    <span><Eye size={16} /> {property.views}</span>
+                    <span><Users size={16} /> {property.inquiries}</span>
+                    <span><Star size={16} /> {property.rating}</span>
+                    <span><Heart size={16} /> {property.favourites}</span>
+                  </div>
+                  <div className="status-badge">{property.status}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
-};
+}
 
 export default Favourites;

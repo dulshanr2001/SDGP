@@ -37,6 +37,23 @@ import Loader from "./components/Loader/Loader.jsx";
 import LandlordProfile from "./components/Profile/LandloardProfile.jsx";
 import useAuthStore from "./store/auth-store.js";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home"; // Path to Home.jsx
+import Favourites from "./components/Favourites"; // Path to Favourites.jsx
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/property/:id" element={<PropertyDetails />} /> {/* Assuming PropertyDetails exists */}
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+
 // Protected route component for authenticated users
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuthStore();

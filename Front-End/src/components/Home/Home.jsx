@@ -2,18 +2,24 @@ import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { Eye, RotateCw, Search, Star, Users, Heart } from "lucide-react";
+import { Eye, RotateCw, Search, Star, Users, Heart, X } from "lucide-react";
 import apiService from "../../services/api-service";
 import { getImage } from "../../utils/image-resolver";
+import useAuthStore from "../../store/auth-store";
 
 function Home() {
   const navigate = useNavigate();
   const [propertyData, setPropertyData] = useState([]);
+  const [favoriteProperties, setFavoriteProperties] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
   const [searchInput, setSearchInput] = useState({
     location: "",
     type: "",
     priceRange: "",
   });
+  
+  const authStore = useAuthStore();
+  const user = authStore.user;
 
   useEffect(() => {
     fetchProperties();
@@ -53,8 +59,58 @@ function Home() {
     navigate(`/property/${propertyId}`);
   };
 
-  const handleViewFavourites = () => {
-    navigate('/favourites');
+  const handleViewFavourites = async () => {
+    if (!user) {
+      alert('Please log in to view favorites');
+      return;
+    }
+
+    if (user.userType === "LANDLORD") {
+      alert('Landlords cannot view favorites');
+      return;
+    }
+
+    // Get favorite property IDs from localStorage
+    const favoriteIds = [];
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith(`favorite_${user.id}_`) && localStorage.getItem(key) === 'true') {
+        const propertyId = key.replace(`favorite_${user.id}_`, '');
+        favoriteIds.push(parseInt(propertyId));
+      }
+    });
+
+    if (favoriteIds.length === 0) {
+      setShowFavorites(true);
+      setFavoriteProperties([]);
+      return;
+    }
+
+    // Fetch property details for favorite IDs
+    try {
+      const favoritePropertiesData = [];
+      for (const propertyId of favoriteIds) {
+        const response = await apiService.get(`/properties/${propertyId}`);
+        if (response.status === 200) {
+          favoritePropertiesData.push(response.data);
+        }
+      }
+      setFavoriteProperties(favoritePropertiesData);
+      setShowFavorites(true);
+    } catch (error) {
+      console.error('Error fetching favorite properties:', error);
+      alert('Error loading favorites');
+    }
+  };
+
+  const closeFavorites = () => {
+    setShowFavorites(false);
+    setFavoriteProperties([]);
+  };
+
+  const removeFromFavorites = (propertyId) => {
+    const favoriteKey = `favorite_${user.id}_${propertyId}`;
+    localStorage.removeItem(favoriteKey);
+    setFavoriteProperties(prev => prev.filter(prop => prop.id !== propertyId));
   };
 
   const fetchProperties = async () => {
@@ -175,6 +231,59 @@ function Home() {
         </div>
       </div>
 
+      {/* Favorites Modal Overlay */}
+      {showFavorites && (
+        <div className="favorites-modal-overlay">
+          <div className="favorites-modal">
+            <div className="favorites-modal-header">
+              <h2>My Favorite Properties ({favoriteProperties.length})</h2>
+              <button className="close-favorites-btn" onClick={closeFavorites}>
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="favorites-modal-content">
+              {favoriteProperties.length === 0 ? (
+                <div className="no-favorites">
+                  <Heart size={48} />
+                  <p>No favorite properties found</p>
+                </div>
+              ) : (
+                <div className="favorites-grid">
+                  {favoriteProperties.map((property) => (
+                    <div key={property.id} className="favorite-property-card">
+                      <div className="favorite-card-image">
+                        <img src={getImage(property)} alt={property.title} />
+                        <button 
+                          className="remove-favorite-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFromFavorites(property.id);
+                          }}
+                        >
+                          <Heart size={16} fill="red" />
+                        </button>
+                      </div>
+                      
+                      <div className="favorite-card-info" onClick={() => handlePropertyClick(property.id)}>
+                        <h3>{property.title}</h3>
+                        <p className="location">{property.location}</p>
+                        <p className="price">{property.price} LKR</p>
+                        <div className="property-stats">
+                          <span><Eye size={16} /> {property.views}</span>
+                          <span><Users size={16} /> {property.inquiries}</span>
+                          <span><Star size={16} /> {property.rating}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="mostviewed-props">
         {propertyData && propertyData.length === 0 ? (
           <div className="flex justify-center h-[60vh] min-h-[60vh] font-bold" style={{ paddingTop: "100px" }}>
@@ -193,7 +302,7 @@ function Home() {
                     <span><Eye size={16} /> {property.views}</span>
                     <span><Users size={16} /> {property.inquiries}</span>
                     <span><Star size={16} /> {property.rating}</span>
-                    <span><Heart size={16} /> {property.favourites} </span>
+                    
                   </div>
                   <div className="status-badge">{property.status}</div>
                 </div>

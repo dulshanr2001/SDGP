@@ -25,12 +25,27 @@ const PropertyDetails = () => {
   const authStore = useAuthStore();
   const user = authStore.user;
 
-  // Fetch property data and favourite status on initial render
+  // Initialize favorites from localStorage immediately
+  useEffect(() => {
+    if (user && user.userType !== "LANDLORD") {
+      // Check localStorage immediately on mount
+      const favoriteKey = `favorite_${user.id}_${propertyId}`;
+      const localStorageValue = localStorage.getItem(favoriteKey);
+      
+      if (localStorageValue === 'true') {
+        setIsFavourited(true);
+      } else if (localStorageValue === 'false') {
+        setIsFavourited(false);
+      }else{
+        checkFavouriteStatus();
+      }
+      
+    }
+  }, [user, propertyId]);
+
+  // Fetch property data on initial render
   useEffect(() => {
     fetchProperty();
-    if (user && user.userType !== "LANDLORD") {
-      checkFavouriteStatus();
-    }
   }, []);
 
   // Fetch reviews and average rating when property ID is available
@@ -59,46 +74,73 @@ const PropertyDetails = () => {
   }, [propertyId]);
 
   // Function to check if the property is favourited by the user
-  const checkFavouriteStatus = async () => {
-    try {
-      const response = await apiService.get(`/favourites/${user.id}/${propertyId}`);
-      if (response.status === 200) {
-        setIsFavourited(response.data.isFavourited);
-      }
-    } catch (error) {
-      console.error('Error checking favourite status:', error);
+const checkFavouriteStatus = async () => {
+  if (!user || user.userType === "LANDLORD") return;
+  
+  try {
+    const favoriteKey = `favorite_${user.id}_${propertyId}`;
+    const localStorageValue = localStorage.getItem(favoriteKey);
+    
+    // Set from localStorage first
+    if (localStorageValue !== null) {
+      setIsFavourited(localStorageValue === 'true');
     }
-  };
+    
+    // Don't check server automatically - only on first load when localStorage is empty
+    if (localStorageValue === null) {
+      const response = await apiService.get(`/users/${user.id}/favorites/${propertyId}/check`);
+      if (response.status === 200) {
+        const serverFavoriteStatus = response.data.isFavorite;
+        localStorage.setItem(favoriteKey, serverFavoriteStatus.toString());
+        setIsFavourited(serverFavoriteStatus);
+      }
+    }
+  } catch (error) {
+    console.error('Error checking favourite status:', error);
+  }
+};
 
   // Function to toggle favourite status
-  const toggleFavourite = async () => {
-    try {
-      setIsLoading(true);
-      const endpoint = isFavourited
-        ? `/favourites/${user.id}/${propertyId}`
-        : '/favourites';
-      const method = isFavourited ? 'delete' : 'post';
-      const payload = !isFavourited ? { userId: user.id, propertyId } : {};
-
-      const response = await apiService[method](endpoint, payload);
-      if (response.status === 200 || response.status === 201) {
-        setIsFavourited(!isFavourited);
-        toast.success(isFavourited ? 'Removed from favourites' : 'Added to favourites');
-        // Update property's favourite count
-        setProperty((prev) => ({
-          ...prev,
-          favourites: isFavourited ? prev.favourites - 1 : prev.favourites + 1,
-        }));
+const toggleFavourite = async () => {
+  if (!user) {
+    toast.warn('Please log in to add favorites');
+    return;
+  }
+  if (user.userType === "LANDLORD") {
+    toast.warn('Landlords cannot add favorites');
+    return;
+  }
+  
+  try {
+    setIsLoading(true);
+    
+    // Call the API
+    const response = await apiService.post(`/users/${user.id}/favorites/${propertyId}/toggle`);
+    
+    if (response.status === 200) {
+      const newFavoriteStatus = response.data.isFavorite;
+      
+      // Update state and localStorage
+      setIsFavourited(newFavoriteStatus);
+      const favoriteKey = `favorite_${user.id}_${propertyId}`;
+      
+      if (newFavoriteStatus) {
+        localStorage.setItem(favoriteKey, 'true');
       } else {
-        toast.error('Failed to update favourite status');
+        localStorage.removeItem(favoriteKey); // Remove instead of setting to 'false'
       }
-    } catch (error) {
-      console.error('Error toggling favourite:', error);
-      toast.error('An error occurred while updating favourites');
-    } finally {
-      setIsLoading(false);
+      
+      toast.success(newFavoriteStatus ? 'Added to favourites' : 'Removed from favourites');
+    } else {
+      toast.error('Failed to update favourite status');
     }
-  };
+  } catch (error) {
+    console.error('Error toggling favourite:', error);
+    toast.error('An error occurred while updating favourites');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // Function to fetch property details from backend
   const fetchProperty = async () => {
@@ -263,7 +305,15 @@ const PropertyDetails = () => {
               onClick={toggleFavourite}
               disabled={isLoading}
             >
-              <Heart size={20} fill={isFavourited ? 'red' : 'none'} /> {isFavourited ? 'Remove Favourite' : 'Add to Favourites'}
+              <Heart 
+                size={20} 
+                fill={isFavourited ? 'currentColor' : 'none'}
+                stroke="currentColor"
+              /> 
+              {isLoading 
+                ? 'Updating...' 
+                : (isFavourited ? 'Remove from Favourites' : 'Add to Favourites')
+              }
             </button>
             <PropertyChatButton
               propertyId={property.id}

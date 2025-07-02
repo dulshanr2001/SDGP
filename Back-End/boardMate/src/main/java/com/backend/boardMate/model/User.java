@@ -47,6 +47,10 @@ public class User {
     @Column
     private String university;
 
+    @Column
+    private String favourites_items;
+
+
     public Long getId() {
         return id;
     }
@@ -142,4 +146,11 @@ public class User {
     public void setUniversity(String university) {
         this.university = university;
     }
-}
+
+    public String getFavouriteItems() {
+        return favourites_items;
+    }
+
+    public void setFavouriteItems(String favouriteItems) {
+        this.favourites_items = favourites_items;}
+    }

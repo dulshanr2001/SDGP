@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import "./Home.css";
+
 import { useEffect, useState } from "react";
 import { Eye, RotateCw, Search, Star, Users, Heart, X } from "lucide-react";
 import apiService from "../../services/api-service";
